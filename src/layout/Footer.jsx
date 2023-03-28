@@ -4,7 +4,7 @@ function Footer() {
           <div className="footer-copyright">
             <div className="container">
             © {new Date().getFullYear()} Nikolay Chernikov
-            <a className="grey-text text-lighten-4 right" href="https://inoris7.github.io/react-toys-shop/">Repo</a>
+            <a className="grey-text text-lighten-4 right" href="https://github.com/inoris7/react-fortnite-shop">Repo</a>
             </div>
           </div>
         </footer>
