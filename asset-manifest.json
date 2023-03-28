@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/inoris7/react-toys-shop/static/css/main.af5ad3de.css",
+    "main.js": "/inoris7/react-toys-shop/static/js/main.2e9b790a.js",
+    "index.html": "/inoris7/react-toys-shop/index.html",
+    "main.af5ad3de.css.map": "/inoris7/react-toys-shop/static/css/main.af5ad3de.css.map",
+    "main.2e9b790a.js.map": "/inoris7/react-toys-shop/static/js/main.2e9b790a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.af5ad3de.css",
+    "static/js/main.2e9b790a.js"
+  ]
+}
