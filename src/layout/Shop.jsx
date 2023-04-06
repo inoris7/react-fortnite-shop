@@ -1,20 +1,15 @@
 import { API_URL, API_KEY } from "../config";
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Preloader } from "../components/Preloader";
 import { GoodsList } from "../components/GoodsList";
 import { Cart } from "../components/Cart";
 import { BasketList } from "../components/BasketList";
 import { Alert } from "../components/Alert";
-import { ShopContext } from "../logic/context";
 
-function Shop() {
-    const {         
-        loading,
-        orders,
-        openedBasket,        
-        alertName,
-        setGoods,        
-    } = useContext(ShopContext);
+import { observer } from "mobx-react-lite";
+import store from "../store/store";
+
+const Shop = observer (() => {    
     
     useEffect(function getGoods() {
         fetch(API_URL, {
@@ -24,19 +19,19 @@ function Shop() {
         })
         .then(response => response.json())
         .then(data => {
-           setGoods(data.featured);                     
+           store.setGoods(data.featured);                     
         });
         //eslint-disable-next-line        
     }, []) 
     
     return (        
         <main className='container content'>
-            {loading ? <Preloader /> : <GoodsList />}
-            <Cart orders={orders} />
-            {openedBasket && <BasketList />}
-            {alertName && <Alert />}
+            {store.loading ? <Preloader /> : <GoodsList />}
+            <Cart orders={store.orders} />
+            {store.openedBasket && <BasketList />}
+            {store.alertName && <Alert />}
         </main>
     )       
-}
+});
 
 export {Shop};

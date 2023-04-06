@@ -1,25 +1,22 @@
 import { GoodsItem } from "./GoodsItem";
-import { useContext } from "react";
-import { ShopContext } from "../logic/context";
+import { observer } from "mobx-react-lite";
+import store from "../store/store";
 
-function GoodsList() {
-    const {goods = []} = useContext(ShopContext);
-
-    if(!goods.length) {
+const GoodsList = observer(() => {
+    if(!store.goods.length) {
         return <h3>Nothing here</h3>
     }
     
     return (
         <div className="goods-list">
-            {goods.map(item => {
+            {store.goods.map(item => {
                 return <GoodsItem 
                         key={item.id} 
                         {...item}                         
                         />;
             })}            
-        </div>
-        
+        </div>        
     )
-}
+});
 
 export {GoodsList};

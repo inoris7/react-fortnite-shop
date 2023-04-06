@@ -1,22 +1,21 @@
+import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
-import { useContext } from "react";
-import { ShopContext } from "../logic/context";
+import store from "../store/store";
 
-function Alert() {
-    const {alertName = '', resetAlert = Function.prototype} = useContext(ShopContext);
+const Alert = observer(() => {  
 
     useEffect(() => {
-        const timerId = setTimeout(resetAlert, 3000);
-
+        const timerId = setTimeout(() => store.resetAlert(), 3000);
+        
         return () => clearTimeout(timerId);
         // eslint-disable-next-line
-    }, [alertName]);
+    }, [store.alertName]);
 
     return (
         <div id="toast-container">
-            <div className="toast">{alertName} added to cart</div>
+            <div className="toast">{store.alertName} added to cart</div>
         </div>
     )
-}
+})
 
 export {Alert};

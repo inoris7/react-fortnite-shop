@@ -1,16 +1,13 @@
-import { useContext } from "react";
-import { ShopContext } from "../logic/context";
+import { observer } from "mobx-react-lite";
+import store from "../store/store";
 
-
-function Cart() {
-    const {orders = [], handleBasketOpen = Function.prototype} = useContext(ShopContext);   
-
+const Cart = observer(() => {
    return (
-    <div className="cart teal accent-3" onClick={handleBasketOpen}>         
+    <div className="cart teal accent-3" onClick={() => store.handleBasketOpen()}>         
         <i className="material-icons cart-icon">shopping_cart</i>
-        <span className="cart-counter">{orders.length ? orders.length : 0}</span>                
+        <span className="cart-counter">{store.orders.length ? store.orders.length : 0}</span>                
     </div>
    )
-}
+});
 
 export{Cart};

@@ -1,16 +1,14 @@
-import { ShopContext } from "../logic/context";
-import { useContext } from "react";
+import { observer } from "mobx-react-lite";
+import store from "../store/store";
 
-function GoodsItem(props) {
+const GoodsItem = observer((props) => {
     const {
         id,
         name,
         description,
         price,
         full_background,                
-    } = props;
-
-    const {addToBasket} = useContext(ShopContext);
+    } = props;    
 
     return (
         <div className="row">
@@ -27,7 +25,7 @@ function GoodsItem(props) {
                     <p className="left" style={{fontSize: '1.8rem'}}>{price} RUB</p>
                     <button 
                         className='btn'
-                        onClick={() => addToBasket({id, name, price})}
+                        onClick={() => store.addToBasket({id, name, price})}
                     >
                         Buy
                     </button>
@@ -36,7 +34,7 @@ function GoodsItem(props) {
             </div>
         </div>
     )
-};
+});
 
 export {GoodsItem};
 
